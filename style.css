@@ -1,0 +1,1143 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* 1. GLOBAL VARIABLES & THEME SETTINGS (Shark Tank Theme)
+*/
+:root {
+  /* Funngro Brand Colors */
+  --brand-green: #00b87c;        
+  --brand-green-hover: #009665;
+  --dark-blue: #09132b;          
+  --darker-blue: #050a17;        
+  --card-dark: #121e38;          
+  --text-main: #1d2538;          
+  --text-muted: #6b7280;         
+  --bg-light: #f4f6f8;           
+  --white: #ffffff;
+  
+  /* Typography & Transitions */
+  --font-family: 'Poppins', sans-serif;
+  --transition-fast: all 0.25s ease-in-out;
+  --transition-slow: all 0.4s ease-in-out;
+  
+  /* Shadows */
+  --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
+  --shadow-md: 0 10px 20px rgba(0,0,0,0.08);
+  --shadow-lg: 0 20px 40px rgba(0,0,0,0.12);
+  --shadow-green: 0 10px 30px rgba(0, 184, 124, 0.25);
+  --shadow-blue: 0 10px 30px rgba(9, 19, 43, 0.2);
+}
+
+/* =========================================================
+   2. RESET & BASE STYLES
+========================================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+}
+
+body {
+  background-color: var(--white);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-fast);
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =========================================================
+   3. REUSABLE UTILITY CLASSES
+========================================================= */
+.flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.text-center { text-align: center; }
+.text-left { text-align: left; flex: 1; }
+.text-white { color: var(--white) !important; }
+.text-green { color: var(--brand-green) !important; }
+.text-white-muted { color: rgba(255, 255, 255, 0.7) !important; }
+
+.bg-light { background-color: var(--bg-light); }
+.bg-dark-blue { background-color: var(--dark-blue); }
+
+.mt-20 { margin-top: 20px; }
+.mt-40 { margin-top: 40px; }
+.mb-20 { margin-bottom: 20px; }
+
+.highlight-green { color: var(--brand-green); }
+
+/* =========================================================
+   4. TOP PROMO BANNER (SHARK TANK)
+========================================================= */
+.top-promo-banner {
+  background-color: var(--brand-green);
+  color: var(--white);
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  position: relative;
+  z-index: 1001;
+  box-shadow: var(--shadow-sm);
+}
+
+.top-promo-banner strong {
+  font-weight: 800;
+  background: var(--dark-blue);
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin: 0 5px;
+  display: inline-block;
+  box-shadow: var(--shadow-sm);
+}
+
+/* =========================================================
+   5. MAIN NAVIGATION BAR
+========================================================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 5%;
+  background: rgba(255, 255, 255, 0.98);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* =========================================================
+   PRO-LOGO DESIGN (No Images Needed)
+========================================================= */
+.custom-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.logo-hand {
+  font-size: 28px;
+  /* Original Funngro Green shade */
+  color: #00b87c; 
+  filter: drop-shadow(0 2px 4px rgba(0,184,124,0.2));
+}
+
+.logo-text {
+  font-size: 26px;
+  font-weight: 800;
+  color: #09132b; /* Dark Blue Professional color */
+  letter-spacing: -1px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.logo-dot {
+  color: #00b87c; /* Green dot at the end */
+}
+
+/* Navbar Alignment Fix */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px; /* Logo aur nav items ko ek line me rakhne ke liye */
+}
+.logo-icon {
+  color: var(--brand-green);
+  font-size: 30px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+  align-items: center;
+}
+
+.nav-btn {
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+.nav-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background-color: var(--brand-green);
+  transition: var(--transition-fast);
+  border-radius: 3px;
+}
+
+.nav-btn:hover::after,
+.nav-btn.active::after {
+  width: 100%;
+}
+
+.nav-btn.active {
+  color: var(--brand-green);
+}
+
+.nav-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.app-icons {
+  display: flex;
+  gap: 12px;
+  margin-right: 15px;
+  font-size: 1.3rem;
+  color: var(--text-muted);
+}
+
+/* Auth Buttons */
+.login-btn {
+  padding: 10px 26px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  border: 2px solid transparent;
+}
+
+.login-btn.outline {
+  background: transparent;
+  border-color: #ddd;
+  color: var(--text-main);
+}
+
+.login-btn.outline:hover {
+  border-color: var(--brand-green);
+  color: var(--brand-green);
+  background: rgba(0, 184, 124, 0.05);
+}
+
+.login-btn.solid {
+  background: var(--brand-green);
+  color: var(--white);
+  border-color: var(--brand-green);
+  box-shadow: var(--shadow-green);
+}
+
+.login-btn.solid:hover {
+  background: var(--brand-green-hover);
+  border-color: var(--brand-green-hover);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   6. HERO SECTIONS (TEEN & COMPANY)
+========================================================= */
+.hero {
+  padding: 100px 5% 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+.teen-hero {
+  background-color: var(--dark-blue);
+  color: var(--white);
+}
+
+.company-hero {
+  background-color: var(--white);
+  color: var(--dark-blue);
+  border-bottom: 1px solid #eee;
+}
+
+.hero-content {
+  max-width: 650px;
+  position: relative;
+  z-index: 5;
+}
+
+.massive-title {
+  font-size: 4.8rem;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+}
+
+.teen-hero .massive-title {
+  color: var(--white);
+}
+
+.hero-desc-bold {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--brand-green);
+}
+
+.hero-desc {
+  font-size: 1.15rem;
+  opacity: 0.8;
+  margin-bottom: 40px;
+  max-width: 550px;
+}
+
+/* Image Wrapper */
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+}
+
+.drop-shadow-green {
+  filter: drop-shadow(0 30px 50px rgba(0, 184, 124, 0.3));
+}
+
+.mobile-mockup-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  margin: auto;
+}
+
+/* App Store Buttons */
+.download-section p {
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.5px;
+}
+
+.store-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.store-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #333;
+  padding: 10px 24px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.store-btn:hover {
+  background-color: #111;
+  border-color: var(--brand-green);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.store-btn .btn-icon {
+  font-size: 2rem;
+}
+
+.store-btn .btn-text {
+  text-align: left;
+  line-height: 1.2;
+}
+
+.store-btn .btn-text small {
+  font-size: 0.7rem;
+  display: block;
+  opacity: 0.8;
+}
+
+.store-btn .btn-text strong {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Primary Action Buttons */
+.primary-btn {
+  padding: 18px 40px;
+  border-radius: 30px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  background: var(--brand-green);
+  color: var(--white);
+  box-shadow: var(--shadow-green);
+  transition: var(--transition-slow);
+  display: inline-block;
+}
+
+.primary-btn:hover {
+  transform: translateY(-5px);
+  background: var(--brand-green-hover);
+  box-shadow: 0 15px 35px rgba(0, 184, 124, 0.4);
+}
+
+/* =========================================================
+   7. STATS BANNER
+========================================================= */
+.stats-banner {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background: var(--white);
+  padding: 45px 5%;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  z-index: 10;
+  margin-top: -60px;
+  border-radius: 20px;
+  max-width: 1200px;
+  margin-inline: auto;
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+.stat-box {
+  text-align: center;
+  padding: 15px;
+  min-width: 200px;
+}
+
+.stat-box h3 {
+  font-size: 2.8rem;
+  color: var(--dark-blue);
+  font-weight: 900;
+  margin-bottom: 5px;
+  letter-spacing: -1px;
+}
+
+.stat-box p {
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+/* =========================================================
+   8. CONTENT SECTIONS & GRIDS
+========================================================= */
+.content-section {
+  padding: 100px 5%;
+  max-width: 1300px;
+  margin: auto;
+}
+
+.section-title {
+  font-size: 2.8rem;
+  color: var(--dark-blue);
+  font-weight: 800;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+.section-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  margin-bottom: 60px;
+  max-width: 750px;
+  margin-inline: auto;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 35px;
+  margin-top: 50px;
+}
+
+/* Standard Cards */
+.card {
+  background: var(--white);
+  padding: 45px 30px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid #f0f0f0;
+  transition: var(--transition-slow);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+  border-color: #e0e0e0;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--brand-green);
+  transform: scaleX(0);
+  transition: var(--transition-slow);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+/* ICON CIRCLES (UPDATED FOR IMAGES) */
+.icon-circle {
+  height: 85px;
+  width: 85px;
+  background: #f0fdf4;
+  color: var(--brand-green);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 38px;
+  margin: 0 auto 25px;
+  border: 1px solid #bbf7d0;
+  overflow: hidden; /* To keep images inside */
+}
+
+/* Support for user's custom images inside icons */
+.icon-circle img {
+  width: 55%;
+  height: 55%;
+  object-fit: contain;
+}
+
+.card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: var(--dark-blue);
+  font-weight: 700;
+}
+
+.card p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 25px;
+}
+
+.learn-more {
+  color: var(--brand-green);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.learn-more:hover {
+  text-decoration: underline;
+}
+
+/* =========================================================
+   9. TIMELINE (HOW IT WORKS)
+========================================================= */
+.timeline-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 60px;
+  position: relative;
+}
+
+.timeline-step {
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.step-circle {
+  width: 65px;
+  height: 65px;
+  background: var(--brand-green);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin: 0 auto 25px;
+  box-shadow: var(--shadow-green);
+  border: 4px solid var(--white);
+}
+
+.timeline-step h4 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  color: var(--dark-blue);
+}
+
+.timeline-step p {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+/* =========================================================
+   10. "WE ARE TRUSTED BY" SECTION (COMPANY PAGE)
+========================================================= */
+.trusted-by-section {
+  background-color: var(--dark-blue);
+  padding: 100px 5%;
+}
+
+.trusted-grid {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 50px auto 0;
+}
+
+.trusted-col {
+  flex: 1;
+  min-width: 300px;
+  border-radius: 12px;
+  padding: 40px 20px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: var(--transition-fast);
+}
+
+.trusted-col:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Column Colors exactly matching user's image */
+.col-grey { background-color: #2b2b2b; }
+.col-teal { background-color: #123e47; }
+.col-green { background-color: #1e3a34; }
+
+.trusted-heading {
+  font-size: 1.5rem;
+  color: var(--white);
+  margin-bottom: 35px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  padding-bottom: 15px;
+  font-weight: 600;
+}
+
+/* LOGO LIST (UPDATED FOR USER'S CUSTOM IMAGES) */
+.logo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+}
+
+.logo-list p {
+  color: var(--white);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 1.15rem;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+/* If user replaces text with <img> tags, this will format them */
+.logo-list img {
+  max-width: 160px;
+  max-height: 45px;
+  object-fit: contain;
+  filter: brightness(0) invert(1); /* Makes colored logos white */
+  opacity: 0.9;
+  transition: var(--transition-fast);
+}
+
+.logo-list img:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* =========================================================
+   11. TESTIMONIALS (Happy Funngro Members)
+========================================================= */
+.testimonials-section {
+  padding: 100px 5%;
+  background-color: var(--dark-blue);
+  color: var(--white);
+}
+
+.testimonials-section .section-title {
+  color: var(--white);
+}
+
+.testimonial-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 35px;
+  max-width: 1200px;
+  margin: 60px auto 0;
+}
+
+.real-card-style {
+  background: var(--card-dark);
+  border: 1px solid #2a3a5a;
+  border-radius: 16px;
+  padding: 35px;
+  transition: var(--transition-slow);
+  text-align: left;
+}
+
+.border-green, .real-card-style:hover {
+  border-color: var(--brand-green);
+  box-shadow: 0 0 25px rgba(0, 184, 124, 0.15);
+}
+
+.real-card-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.real-avatar {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid transparent;
+  transition: var(--transition-fast);
+}
+
+.real-card-style:hover .real-avatar {
+  border-color: var(--brand-green);
+}
+
+.reviewer h4 {
+  font-size: 1.15rem;
+  margin-bottom: 3px;
+}
+
+.reviewer p {
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+.real-stars {
+  font-size: 1rem;
+  margin-bottom: 18px;
+  letter-spacing: 2px;
+}
+
+.real-review-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  font-weight: 300;
+  opacity: 0.95;
+}
+
+/* Teen Page Override (Light Testimonials) */
+.bg-light .testimonials-section { background-color: var(--bg-light); }
+.bg-light .real-card-style { background: var(--white); border: 1px solid #e5e7eb; box-shadow: var(--shadow-sm); }
+.bg-light .real-card-style:hover { border-color: var(--brand-green); box-shadow: var(--shadow-md); }
+.bg-light .reviewer h4, .bg-light .real-review-text, .bg-light .section-title { color: var(--dark-blue); }
+.bg-light .reviewer p, .bg-light .section-subtitle { color: var(--text-muted); }
+
+/* =========================================================
+   12. ACADEMY SECTION
+========================================================= */
+.academy-section {
+  padding: 80px 5%;
+  margin: 0;
+}
+
+.academy-content h2 {
+  font-size: 3.2rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.check-list li {
+  font-size: 1.15rem;
+  margin-bottom: 15px;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* =========================================================
+   13. PRICING SECTION
+========================================================= */
+.pricing-section {
+  padding: 100px 5%;
+}
+
+/* Isse cards ka size control hoga aur wo screen par faillenge nahi */
+.pricing-section .card-grid {
+  max-width: 900px; 
+  margin: 50px auto 0;
+  gap: 40px;
+}
+
+.price-card {
+  text-align: left;
+  padding: 40px;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  overflow: visible !important;
+}
+
+.price-card h3 {
+  font-size: 1.3rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.price-card h2 {
+  font-size: 3rem; /* Font thoda chota kiya taaki 'Custom pricing' ek line me achha lage */
+  color: var(--dark-blue);
+  margin-bottom: 25px;
+  line-height: 1.1;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.price-card h2 span {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.price-features {
+  margin-bottom: 30px;
+  flex-grow: 1; /* Ye buttons ko automatically bottom me dhakel dega */
+}
+
+.price-features li {
+  margin-bottom: 15px;
+  font-weight: 500;
+  color: var(--text-main);
+  font-size: 1.05rem;
+}
+
+.price-card.popular {
+  border: 2px solid var(--brand-green);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-lg);
+  z-index: 2;
+}
+
+.popular-tag {
+  position: absolute;
+  top: -16px;
+  right: 30px;
+  background: var(--brand-green);
+  color: var(--white);
+  padding: 6px 20px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  box-shadow: var(--shadow-sm);
+}
+
+.price-btn {
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  margin-top: auto; /* Dono buttons perfect ek line me aa jayenge */
+}
+
+.outline-comp {
+  background: transparent;
+  border: 2px solid var(--dark-blue);
+  color: var(--dark-blue);
+}
+
+.outline-comp:hover {
+  background: var(--dark-blue);
+  color: var(--white);
+}
+
+.solid-comp {
+  background: var(--brand-green);
+  color: var(--white);
+  border: none;
+  box-shadow: var(--shadow-green);
+}
+
+.solid-comp:hover {
+  background: var(--brand-green-hover);
+  transform: translateY(-2px);
+}
+/* =========================================================
+   14. MASSIVE MEGA FOOTER (WITH REAL SVG LOGOS)
+========================================================= */
+.mega-footer {
+  background-color: var(--darker-blue);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 80px 5% 20px;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr 1fr 1fr;
+  gap: 50px;
+  max-width: 1300px;
+  margin: 0 auto 60px;
+}
+
+.footer-logo {
+  font-size: 2.5rem;
+  color: var(--white);
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.footer-logo .dot {
+  color: var(--brand-green);
+}
+
+.brand-col p {
+  max-width: 350px;
+  margin-bottom: 35px;
+  line-height: 1.8;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icon {
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+  font-weight: 600;
+  transition: var(--transition-fast);
+}
+
+.social-icon:hover {
+  background: var(--brand-green);
+  transform: translateY(-4px);
+  color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 184, 124, 0.4);
+}
+
+.footer-col h4 {
+  color: var(--white);
+  font-size: 1.25rem;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+.footer-col ul li {
+  margin-bottom: 16px;
+}
+
+.footer-col ul li a {
+  transition: var(--transition-fast);
+}
+
+.footer-col ul li a:hover {
+  color: var(--brand-green);
+  padding-left: 6px;
+}
+
+.footer-newsletter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 1300px;
+  margin: 0 auto 40px;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.news-text h4 {
+  color: var(--white);
+  font-size: 1.35rem;
+  margin-bottom: 5px;
+}
+
+.news-form {
+  display: flex;
+  gap: 12px;
+  flex: 1;
+  max-width: 500px;
+  justify-content: flex-end;
+}
+
+.newsletter-input {
+  padding: 16px 25px;
+  border-radius: 8px;
+  border: none;
+  width: 100%;
+  max-width: 320px;
+  outline: none;
+  font-family: var(--font-family);
+  font-size: 1rem;
+}
+
+.subscribe-btn {
+  padding: 16px 35px;
+  border-radius: 8px;
+  border: none;
+  background: var(--brand-green);
+  color: var(--white);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  font-size: 1rem;
+}
+
+.subscribe-btn:hover {
+  background: var(--brand-green-hover);
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 0.95rem;
+  padding-top: 10px;
+}
+
+/* =========================================================
+   15. ADVANCED KEYFRAME ANIMATIONS
+========================================================= */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pulse-badge {
+  animation: pulse 2.5s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(255, 255, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-25px); }
+  100% { transform: translateY(0px); }
+}
+
+/* =========================================================
+   16. RESPONSIVE DESIGN (Media Queries)
+========================================================= */
+/* Tablet Large */
+@media (max-width: 1200px) {
+  .massive-title { font-size: 3.8rem; }
+  .footer-top { grid-template-columns: 2fr 1fr 1fr; }
+  .footer-col:last-child { display: none; }
+}
+
+/* Tablet Portrait */
+@media (max-width: 992px) {
+  .flex-container { flex-direction: column; text-align: center; gap: 40px; }
+  .text-left { text-align: center; }
+  .hero-actions, .media-logos, .store-buttons { justify-content: center; }
+  .hero-desc { margin: 0 auto 30px; }
+  .price-card.popular { transform: scale(1); }
+  .stats-banner { margin-top: 20px; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .academy-section { flex-direction: column-reverse; }
+  .trusted-grid { flex-direction: column; }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+  /* Top Banner */
+  .top-promo-banner { font-size: 0.75rem; padding: 10px; }
+  
+  /* Navbar */
+  .navbar { flex-direction: column; gap: 15px; padding: 15px; }
+  .logo-container { width: 100%; justify-content: center; margin-bottom: 5px; }
+  .nav-links { width: 100%; justify-content: center; gap: 15px; flex-wrap: wrap; }
+  .nav-btn { font-size: 1.1rem; padding: 5px 10px; }
+  .nav-actions, .nav-dropdown { display: none; } 
+  
+  /* Hero */
+  .hero { padding: 60px 5% 80px; }
+  .massive-title { font-size: 2.8rem; letter-spacing: -1px; }
+  .hero-desc-bold { font-size: 1.2rem; }
+  .primary-btn, .login-btn { width: 100%; text-align: center; }
+  
+  /* Stats */
+  .stats-banner { flex-direction: column; padding: 25px; gap: 20px; border-radius: 15px; }
+  .stat-box { border-bottom: 1px solid #eee; padding-bottom: 20px; }
+  .stat-box:last-child { border-bottom: none; padding-bottom: 0; }
+  
+  /* Layout */
+  .content-section, .trusted-by-section { padding: 60px 5%; }
+  .section-title { font-size: 2.2rem; }
+  
+  /* Price Cards */
+  .price-card { padding: 40px 25px; }
+  
+  /* Footer */
+  .footer-top { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+  .social-links { justify-content: center; margin-top: 20px; }
+  .news-form { justify-content: center; flex-direction: column; align-items: center; }
+  .newsletter-input { max-width: 100%; }
+}
+pricing-section .card {
+  overflow: visible !important;
+}
+.pricing-section .card-grid {
+  padding-top: 25px !important; /* Tag ko upar nikalne ki jagah dega */
+}
+/* 3. Teen Page Testimonial Invisible Text Fix */
+section.testimonials-section.bg-light {
+  background-color: var(--bg-light) !important;
+}
